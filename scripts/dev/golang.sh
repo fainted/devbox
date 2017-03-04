@@ -18,7 +18,7 @@ if [[ $? != 0 ]]; then
     return
 fi
 
-GODIR="/usr/local/golang"
+GODIR="/home/vagrant/golang"
 GOROOT="$GODIR/go"
 GOPATH="$GODIR/gopath"
 
@@ -38,6 +38,8 @@ export GOPATH=$GOPATH
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 
-# go tools
-go get github.com/golang/lint
+# 使用gopm下载包
+go get -u github.com/gpmgo/gopm
+
+gopm get -g -u github.com/golang/lint/golint
 go install github.com/golang/lint/golint
