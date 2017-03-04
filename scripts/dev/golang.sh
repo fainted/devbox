@@ -19,24 +19,29 @@ if [[ $? != 0 ]]; then
 fi
 
 GODIR="/home/vagrant/golang"
-GOROOT="$GODIR/go"
-GOPATH="$GODIR/gopath"
+GOROOT="$GODIR/root"
+GOPATH="$GODIR/path"
+GOBIN="$GODIR/bin"
 
 rm -rf $GODIR
 mkdir -p $GOROOT
 mkdir -p $GOPATH
+mkdir -p $GOBIN
 tar -C $GODIR -xf $GOLANG_TARGET
 
 echo -e "\n" | sudo tee -a /etc/profile
 echo "export GOROOT=$GOROOT" | sudo tee -a /etc/profile
 echo "export GOPATH=$GOPATH" | sudo tee -a /etc/profile
+echo "export GOBIN=$GOBIN" | sudo tee -a /etc/profile
 echo "export PATH=\$PATH:$GOROOT/bin" | sudo tee -a /etc/profile
 echo "export PATH=\$PATH:$GOPATH/bin" | sudo tee -a /etc/profile
+echo "export PATH=\$PATH:$GOBIN" | sudo tee -a /etc/profile
 
 export GOROOT=$GOROOT
 export GOPATH=$GOPATH
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOBIN
 
 # 使用gopm下载包
 go get -u github.com/gpmgo/gopm
