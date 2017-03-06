@@ -30,26 +30,13 @@ vagrant ssh
 
 ### 2.2 **基础软件安装**
 初始化虚拟机将安装
-- zsh
-    - oh-my-zsh
-- git
-- subversion
-- curl
-- wget
-- htop
-- rsync
-- telnet
-- nmap
-- pstack
-- tree
-- gcc
-- g++
-- gdb
-- make
-- tcpdump
-- autoconf
-- mysql-client
-- redis-tools
+- zsh/oh-my-zsh
+- git/subversion
+- curl/wget/rsync
+- tcpdump/telnet/nmap
+- htop/tree
+- gcc/g++/gdb/make/autoconf/pstack
+- mysql-client/redis-tools
 
 ### 2.3 **开发环境搭建**
 默认情况下当前目录会同步至虚拟机的/vagrant目录
@@ -57,3 +44,12 @@ vagrant ssh
 在虚拟机中运行/vagrant/scripts/dev目录下的脚本安装开发工具
 - [Golang](./scripts/dev/golang.sh)(要翻墙)
 - [Python](./scripts/dev/python.sh)
+
+## 3 常见问题
+### 3.1 zsh自动补全出错
+```shell
+$ git config --get re<TAB>
+(eval):1: bad substitution
+(eval):1: bad substitution
+```
+安装更高版本的zsh(源码安装依赖于libncurses-devel)后重新登录
