@@ -53,3 +53,9 @@ $ git config --get re<TAB>
 (eval):1: bad substitution
 ```
 安装更高版本的zsh(源码安装依赖于libncurses-devel)后重新登录
+
+### 3.2 无法使用密码登录
+```
+修改/etc/sshd_config 设置选项
+PasswordAuthentication yes
+```
