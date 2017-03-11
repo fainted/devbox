@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 printf "Setting up golang develop enviroment...\n"
 
@@ -18,8 +18,8 @@ if [[ $? != 0 ]]; then
     return
 fi
 
-GODIR="/home/vagrant/golang"
-GOROOT="$GODIR/root"
+GODIR="$HOME/golang"
+GOROOT="$GODIR/go"
 GOPATH="$GODIR/path"
 GOBIN="$GODIR/bin"
 
@@ -29,22 +29,25 @@ mkdir -p $GOPATH
 mkdir -p $GOBIN
 tar -C $GODIR -xf $GOLANG_TARGET
 
-echo -e "\n" | sudo tee -a /etc/profile
-echo "export GOROOT=$GOROOT" | sudo tee -a /etc/profile
-echo "export GOPATH=$GOPATH" | sudo tee -a /etc/profile
-echo "export GOBIN=$GOBIN" | sudo tee -a /etc/profile
-echo "export PATH=\$PATH:$GOROOT/bin" | sudo tee -a /etc/profile
-echo "export PATH=\$PATH:$GOPATH/bin" | sudo tee -a /etc/profile
-echo "export PATH=\$PATH:$GOBIN" | sudo tee -a /etc/profile
+tee -a /home/vagrant/.zshrc <<EOF
+
+export GOROOT="$GOROOT"
+export GOPATH="$GOPATH"
+export GOBIN="$GOBIN"
+export PATH="\$PATH:$GOROOT/bin"
+export PATH="\$PATH:$GOPATH/bin"
+export PATH="\$PATH:$GOBIN"
+EOF
+
 
 export GOROOT=$GOROOT
 export GOPATH=$GOPATH
+export GOBIN="$GOBIN"
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOBIN
 
 # 使用gopm下载包
 go get -u github.com/gpmgo/gopm
-
 gopm get -g -u github.com/golang/lint/golint
 go install github.com/golang/lint/golint

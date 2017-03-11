@@ -26,6 +26,7 @@ Vagrant.configure(2) do |config|
     # 默认文件同步 host [.] => guest [/vagrant]
 
     # 初始化环境
-    config.vm.provision "shell", path: "./scripts/env.sh"
     config.vm.provision "shell", path: "./scripts/tools.sh"
+    config.vm.provision "shell", path: "./scripts/env.sh"
+    config.vm.provision "shell", path: "./scripts/crontab.sh"
 end

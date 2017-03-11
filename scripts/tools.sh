@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# 切换至中科大源 https://lug.ustc.edu.cn/wiki/mirrors/help/debian
+sudo sed -i 's/httpredir.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+sudo apt-get update
+
 # 部分软件安装
 sudo apt-get install -yq --no-install-suggests --no-install-recommends \
     zsh \
