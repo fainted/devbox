@@ -56,6 +56,6 @@ $ git config --get re<TAB>
 
 ### 3.2 无法使用密码登录
 ```
-修改/etc/sshd_config 设置选项
-PasswordAuthentication yes
+1. 修改/etc/ssh/sshd_config: 设置选项 PasswordAuthentication yes
+2. 重启sshd: sudo systemctl reload ssh.service
 ```
