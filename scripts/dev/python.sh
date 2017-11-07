@@ -26,6 +26,8 @@ sudo cp $PIP_CONFIG_DIR/pip.conf /root/.config/pip/pip.conf
 # shadowsocks
 # mycli
 # icdiff
-sudo pip install virtualenv shadowsocks mycli icdiff
+# httpie
+# wheel
+sudo pip install virtualenv shadowsocks mycli icdiff httpie wheel
 
 # TODO setup pip auto completion

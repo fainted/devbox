@@ -5,6 +5,7 @@ sudo sed -i 's/httpredir.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 sudo apt-get update
 
 # 部分软件安装
+# 移除mysql-client, 改用pypi模块mycli
 sudo apt-get install -yq --no-install-suggests --no-install-recommends \
     zsh \
     git \
@@ -21,14 +22,16 @@ sudo apt-get install -yq --no-install-suggests --no-install-recommends \
     g++ \
     gdb \
     make \
+    ctags \
     tcpdump \
     autoconf \
-    mysql-client \
-    redis-tools
+    redis-tools \
+    protobuf-compiler \
+    graphviz \
+    cloc
 
 # 后续可能需要
 # thrift
-# protobuf
 # lua
 # docker-engine
 

@@ -23,7 +23,12 @@ Vagrant.configure(2) do |config|
     # 分配IP
     config.vm.network "private_network", ip: "192.168.33.33"
 
-    # 默认文件同步 host [.] => guest [/vagrant]
+    # 禁用默认文件同步 host [.] => guest [/vagrant]
+    config.vm.synced_folder ".", "/vagrant", disabled: true
+
+    # host:~/vagrant_sync_folder <==> vagrant:~/sync
+    config.vm.synced_folder "~/vagrant_sync_folder", "/home/vagrant/sync",
+        create: true, type: "nfs"   # OSX/Linux: NFS, Windows: SMB
 
     # 初始化环境
     config.vm.provision "shell", path: "./scripts/tools.sh"
